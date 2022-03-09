@@ -1,0 +1,12 @@
+const express = require("express");
+const authMiddle = require("../middleware/auth.js");
+const router = express.Router();
+const blankController = require("../controller/blankController");
+router.get("/", blankController.home);
+router.get("/smoothies", authMiddle.requireAuth, blankController.smoothies);
+router.get("/logout", blankController.getLogout);
+router.get("/signup", blankController.getSignup);
+router.get("/login", blankController.getLogin);
+router.post("/signup", blankController.postSignup);
+router.post("/login", blankController.postLogin);
+module.exports = router;
